@@ -25,3 +25,7 @@
 ion-content {
     background-color: rgb(240, 240, 240) !important;
 }
+
+[no-lines].border-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}

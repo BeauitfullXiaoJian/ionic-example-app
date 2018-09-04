@@ -1,4 +1,5 @@
 var faker = require('faker/locale/zh_CN');
+var fs = require('fs');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
@@ -22,6 +23,15 @@ app.all('*', function (req, res, next) {
 
 app.get('/', function (req, res) {
     res.send('Hello World!');
+});
+
+app.get('/avatar', function (req, res) {
+    const base64 = fs.readFileSync('assets/avatar.jpg', 'base64');
+    res.send('data:image/jpg;base64,' + base64);
+});
+app.get('/qrcode', function (req, res) {
+    const base64 = fs.readFileSync('assets/qrcode.png', 'base64');
+    res.send('data:image/png;base64,' + base64);
 });
 
 app.post('/login', function (req, res) {

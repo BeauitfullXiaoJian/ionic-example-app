@@ -6,10 +6,11 @@
  */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
-import { skipWhile } from 'rxjs/operators';
 import { HttpConfig } from './../../configs/http.config';
 import { ApiData } from './api-data';
+import { Observable, Subject } from 'rxjs';
+import { skipWhile } from 'rxjs/operators';
+import 'rxjs/add/observable/interval';
 
 
 @Injectable()
@@ -35,12 +36,12 @@ export class RequestService {
     websocket(host: string, protocols: string | string[] = []): Observable<string> {
         let reconnent = true;
         const subject: Subject<string> = new Subject<string>();
-        // interval(HttpConfig.RECONNECT_TIME).subscribe(() => {
-        //     if (reconnent) {
-        //         this.initWebsocket(host, protocols, subject, () => reconnent = true);
-        //     }
-        //     reconnent = false;
-        // });
+        Observable.interval(HttpConfig.RECONNECT_TIME).subscribe(() => {
+            if (reconnent) {
+                this.initWebsocket(host, protocols, subject, () => reconnent = true);
+            }
+            reconnent = false;
+        });
         return subject.asObservable();
     }
 

@@ -10,16 +10,15 @@ $font-path: "../assets/fonts";
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
 
-$toast-max-width: 200px;
-
-@import "ionic.globals";
-
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
+$toast-max-width: 200px;
+
+$toolbar-order-md: (back-button: 0, menu-toggle-start: 1, buttons-left: 2, buttons-start: 3, content: 4, buttons-end: 5, buttons-right: 6, menu-toggle-end: 7);
 
 // Named Color Variables
 // --------------------------------------------------

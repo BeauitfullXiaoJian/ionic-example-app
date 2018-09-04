@@ -6,13 +6,15 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>dashboard</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>dashboard</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+    <ion-card>
+        <canvas chart [data]="data" [options]="options" type="line" labels="labels"></canvas>
+    </ion-card>
 </ion-content>

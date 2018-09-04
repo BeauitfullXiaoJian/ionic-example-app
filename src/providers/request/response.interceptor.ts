@@ -57,19 +57,13 @@ export class ResponseInterceptor implements HttpInterceptor {
             }
 
             // 显示提示消息
-            if (~HttpConfig.INFO_CODES.indexOf(code)) {
-                // this.toast.info(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
-            } else if (~HttpConfig.WARNING_CODES.indexOf(code)) {
-                // this.toast.warning(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
-            } else {
-                // this.toast.danger(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
-            }
+            this.showToast(`code:${code} ${errorMessage}`);
 
         } else if (error instanceof TimeoutError) {
-            [errorMessage, errorTitle] = HttpConfig.HTTP_ERRORS.TIMEOUT_ERROR;
-            // this.toast.danger(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
+            this.showToast('网络超时');
         } else {
             [errorMessage, errorTitle] = HttpConfig.HTTP_ERRORS.OTHER_ERROR;
+            this.showToast(`code:0 ${errorMessage}`);
             // this.toast.danger(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
         }
 

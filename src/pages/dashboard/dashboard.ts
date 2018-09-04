@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 
 /**
  * Generated class for the DashboardPage page.
@@ -10,16 +10,38 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-dashboard',
-  templateUrl: 'dashboard.html',
+    selector: 'page-dashboard',
+    templateUrl: 'dashboard.html',
 })
 export class DashboardPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    data = {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '红色',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+            borderColor: ['rgba(255,99,132,1)'],
+            borderWidth: 1
+        }, {
+            label: '蓝色',
+            data: [12, 19, 3, 5, 2, 3].reverse(),
+            backgroundColor: ['rgba(54, 162, 235, 0.2)'],
+            borderColor: ['rgba(54, 162, 235, 1)'],
+            borderWidth: 1
+        }]
+    };
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DashboardPage');
-  }
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+
+    constructor() { }
 
 }

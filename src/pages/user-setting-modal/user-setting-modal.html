@@ -1,0 +1,56 @@
+<!--
+  Generated template for the UserSettingModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-buttons start (click)="viewCtrl.dismiss()">
+            <button ion-button icon-only>
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title text-center>个人信息</ion-title>
+        <!-- 使用空图标占位 -->
+        <ion-buttons end>
+            <button ion-button icon-only>
+                <ion-icon></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <input style="display:none" #fileDome type="file" accept="image/*" (change)="updateAvatar(fileDome.files[0])">
+    <ion-list margin-vertical>
+        <button (click)="openPhotoLibrary()" ion-item detail-none no-lines class="border-bottom">
+            <ion-label>头像</ion-label>
+            <ion-thumbnail item-end>
+                <img [src]="avatar">
+            </ion-thumbnail>
+        </button>
+        <button (click)="showNickAlert()" ion-item detail-none no-lines class="border-bottom">
+            <ion-label>昵称</ion-label>
+            <ion-note item-end>梦想的乡</ion-note>
+        </button>
+        <button ion-item detail-none no-lines class="border-bottom">
+            <ion-label>手机号</ion-label>
+            <ion-note item-end>18270881855</ion-note>
+        </button>
+        <button (click)="showQrcode()" ion-item detail-none no-lines class="border-bottom">
+            <ion-label>二维码名片</ion-label>
+            <ion-note item-end>
+                <img height="20" src="assets/icon/qrcode.svg">
+            </ion-note>
+        </button>
+    </ion-list>
+    <ion-list>
+        <button ion-item detail-none no-lines class="border-bottom">
+            <ion-label>我的地址</ion-label>
+        </button>
+    </ion-list>
+</ion-content>

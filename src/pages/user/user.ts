@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ModalController } from 'ionic-angular';
 
 /**
  * Generated class for the UserPage page.
@@ -10,16 +10,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-user',
-  templateUrl: 'user.html',
+    selector: 'page-user',
+    templateUrl: 'user.html',
 })
 export class UserPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    constructor(private modalCtrl: ModalController) { }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UserPage');
-  }
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad UserPage');
+    }
+
+    /**
+     * 显示用户设置弹窗
+     */
+    showUserSettingModal() {
+        this.modalCtrl.create('UserSettingModalPage').present();
+    }
 
 }
