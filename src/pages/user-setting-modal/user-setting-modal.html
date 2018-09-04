@@ -27,7 +27,7 @@
 <ion-content>
     <input style="display:none" #fileDome type="file" accept="image/*" (change)="updateAvatar(fileDome.files[0])">
     <ion-list margin-vertical>
-        <button (click)="openPhotoLibrary()" ion-item detail-none no-lines class="border-bottom">
+        <button (click)="requestPhotpPermission();fileDome.click()" ion-item detail-none no-lines class="border-bottom">
             <ion-label>头像</ion-label>
             <ion-thumbnail item-end>
                 <img [src]="avatar">

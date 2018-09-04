@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, ViewController, AlertController, ModalController } from 'ionic-angular';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+declare const window: any;
 
 /**
  * Generated class for the UserSettingModalPage page.
@@ -56,6 +57,13 @@ export class UserSettingModalPage {
      */
     showQrcode() {
         this.modalCtrl.create('UserQrcodeModalPage').present();
+    }
+
+    /**
+     * 请求相册权限
+     */
+    requestPhotpPermission() {
+        window.imagePicker.requestReadPermission();
     }
 
     /**
