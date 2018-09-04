@@ -28,4 +28,11 @@ export class UserPage {
         this.modalCtrl.create('UserSettingModalPage').present();
     }
 
+    /**
+     * 显示系统设置弹窗
+     */
+    showSystemSettingModal() {
+        this.modalCtrl.create('SystemSettingModalPage').present();
+    }
+
 }

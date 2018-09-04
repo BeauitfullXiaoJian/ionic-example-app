@@ -1,1 +1,48 @@
-page-dashboard {}
+page-dashboard {
+    table {
+        width: 100%;
+        margin-bottom: 1rem;
+        background-color: transparent;
+    }
+
+    .table td, .table th {
+        padding: .75rem;
+        vertical-align: top;
+    }
+
+    .table thead th {
+        vertical-align: bottom;
+    }
+
+    .table tbody + tbody {
+        border-top: 2px solid #dee2e6;
+    }
+
+    .table-sm td, .table-sm th {
+        padding: .3rem;
+    }
+
+    .table-bordered {
+        border: 1px solid #dee2e6;
+    }
+
+    .table-bordered td, .table-bordered th {
+        border: 1px solid #dee2e6;
+    }
+
+    .table-bordered thead td, .table-bordered thead th {
+        border-bottom-width: 2px;
+    }
+
+    .table-borderless tbody + tbody, .table-borderless td, .table-borderless th, .table-borderless thead th {
+        border: 0;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+}
