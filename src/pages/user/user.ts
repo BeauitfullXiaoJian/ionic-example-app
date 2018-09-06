@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, ModalController } from 'ionic-angular';
+import { AuthService } from '../../providers/auth/auth';
 
 /**
  * Generated class for the UserPage page.
@@ -15,11 +16,11 @@ import { IonicPage, ModalController } from 'ionic-angular';
 })
 export class UserPage {
 
-    constructor(private modalCtrl: ModalController) { }
-
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad UserPage');
+    get user(): any {
+        return this.auth.user || {};
     }
+
+    constructor(private modalCtrl: ModalController, private auth: AuthService) { }
 
     /**
      * 显示用户设置弹窗

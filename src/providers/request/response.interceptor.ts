@@ -8,21 +8,35 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, Htt
 import { Observable, TimeoutError } from 'rxjs';
 import 'rxjs/add/observable/of';
 import { HttpConfig, INTERCEPTOR_MESSAGES } from '../../configs/http.config';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, timeout } from 'rxjs/operators';
 import { ApiData, ApiResponse } from './api-data';
-import { ToastController } from 'ionic-angular';
+import { ToastController, App } from 'ionic-angular';
 
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
 
-    constructor(private toastCtrl: ToastController) { }
+    constructor(private toastCtrl: ToastController, private app: App) { }
 
-    showToast(message: string) {
+    showToast(code: number, message: string) {
+        console.log('code=>', code);
         this.toastCtrl.create({ message, duration: 1000, cssClass: 'toast' }).present()
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+        // 获取请求参数
+        const httpParams = request.params;
+
+        // 获取请求超时时间
+        let maxRequestTime = HttpConfig.TIME_OUT;
+
+        // 允许重设请求超时，如果请求参数中出现了关键参数REQUEST_TIME_OUT
+        if (httpParams.has('REQUEST_TIME_OUT')) {
+            maxRequestTime = Number(httpParams.get('REQUEST_TIME_OUT'));
+        }
+
         return next.handle(request).pipe(
+            timeout(maxRequestTime),
             catchError(error => this.errorHandle(error)),
             map(res => this.responseHandle(res, request)),
         );
@@ -44,9 +58,9 @@ export class ResponseInterceptor implements HttpInterceptor {
 
             // 需要跳转的状态码
             if (code === 401) {
-                // this.router.navigateByUrl(HttpConfig.TOKEN_ERROR_URL);
+                this.app.getRootNav().setRoot('LoginPage');
             } else if (code === 403) {
-                // this.router.navigateByUrl(HttpConfig.AUTH_ERROR_URL);
+                this.app.getRootNav().setRoot('LoginPage');
             }
 
             // 获取状态码对应提示消息
@@ -57,14 +71,13 @@ export class ResponseInterceptor implements HttpInterceptor {
             }
 
             // 显示提示消息
-            this.showToast(`code:${code} ${errorMessage}`);
+            this.showToast(code, errorMessage);
 
         } else if (error instanceof TimeoutError) {
-            this.showToast('网络超时');
+            this.showToast(0, '网络超时');
         } else {
             [errorMessage, errorTitle] = HttpConfig.HTTP_ERRORS.OTHER_ERROR;
-            this.showToast(`code:0 ${errorMessage}`);
-            // this.toast.danger(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
+            this.showToast(0, errorMessage);
         }
 
         return Observable.of<HttpResponse<string>>(new HttpResponse<string>({
@@ -83,7 +96,7 @@ export class ResponseInterceptor implements HttpInterceptor {
             if (res.body !== null && ApiResponse.isApiResponse(res.body)) {
                 const apiData = new ApiData(res.body.result, res.body.message, res.body.datas);
                 if (apiData.result === false) {
-                    this.showToast(apiData.messageStr);
+                    this.showToast(200, apiData.messageStr);
                 }
                 res = res.clone<ApiData>({ body: apiData });
 

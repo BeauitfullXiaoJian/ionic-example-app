@@ -1,4 +1,4 @@
-var faker = require('faker/locale/zh_CN');
+var faker = require('faker/locale/en_US');
 var fs = require('fs');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -57,6 +57,26 @@ app.get('/info', function (req, res) {
         nickName: '梦想的乡',
         avatar: 'https://hello1024.oss-cn-beijing.aliyuncs.com/upload/goods/201808310421101174382331f7a611f0fcec856c2120ab5b88c236f3fa19.63574178.jpg'
     }));
+});
+
+app.get('/list', function (req, res) {
+    const limit = Number(req.query.limit || 10);
+    const offset = Number(req.query.offset || 0);
+    const total = 100;
+    const datas = {
+        total: total,
+        rows: []
+    };
+    if (offset + limit <= total) {
+        for (let i = 0; i < limit; i++) {
+            datas.rows.push({
+                image: `https://picsum.photos/200/300?image=${10 + offset + i}`,
+                name: faker.name.findName(),
+                address: faker.address.streetAddress()
+            });
+        }
+    }
+    setTimeout(() => res.send(successData(datas)), 300);
 });
 
 app.listen(8080);
