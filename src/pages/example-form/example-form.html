@@ -1,0 +1,77 @@
+<!--
+  Generated template for the ExampleFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-buttons start (click)="viewCtrl.dismiss()">
+            <button ion-button icon-only>
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title text-center>表单示例</ion-title>
+        <!-- 使用空图标占位 -->
+        <ion-buttons end>
+            <button ion-button icon-only>
+                <ion-icon></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <form #form="ngForm">
+        <ion-list>
+
+            <ion-item no-lines class="border-bottom">
+                <ion-label fixed>姓名</ion-label>
+                <ion-input name="realName" [(ngModel)]="formData.realName" text-right type="text" placeholder="请输入您的姓名" required></ion-input>
+            </ion-item>
+            <ion-item no-lines class="border-bottom">
+                <ion-label>性别</ion-label>
+                <ion-select name="gender" [(ngModel)]="formData.gender" interface="popover" okText="确认" cancelText="取消" required>
+                    <ion-option [value]="0">保密</ion-option>
+                    <ion-option [value]="1">先生</ion-option>
+                    <ion-option [value]="2">女士</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item no-lines class="border-bottom">
+                <ion-label>生日</ion-label>
+                <ion-datetime name="birthday" [(ngModel)]="formData.birthday" doneText="确认" cancelText="取消" displayFormat="YYYY/MM/DD" required></ion-datetime>
+            </ion-item>
+
+        </ion-list>
+        <ion-list>
+
+            <ion-item no-lines class="border-bottom">
+                <ion-label>学校</ion-label>
+                <ion-select name="school" [(ngModel)]="formData.school" okText="确认" cancelText="取消" required>
+                    <ion-option [value]="0">南昌大学</ion-option>
+                    <ion-option [value]="1">江西师范大学</ion-option>
+                    <ion-option [value]="2">江西财经大学</ion-option>
+                    <ion-option [value]="3">江西科技师范大学</ion-option>
+                    <ion-option [value]="4">南昌航空大学</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item no-lines class="border-bottom">
+                <ion-range name="range" [(ngModel)]="formData.range" mode="ios" min="0" max="100" step="5" snaps="true" required>
+                    <ion-label range-left>0</ion-label>
+                    <ion-label range-right>{{formData.range}}</ion-label>
+                </ion-range>
+            </ion-item>
+
+            <div padding>
+                <button (click)="confirmSubmit()" [disabled]="form.invalid" ion-button block>确认提交</button>
+            </div>
+
+        </ion-list>
+    </form>
+
+</ion-content>
