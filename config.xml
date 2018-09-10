@@ -85,5 +85,6 @@
     <plugin name="cordova-plugin-telerik-imagepicker" spec="^2.2.2">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="读取本地相册" />
     </plugin>
+    <plugin name="cordova-native-view" spec="/home/xiaojian/Git/cordova-native-view" />
     <engine name="android" spec="7.0.0" />
 </widget>
