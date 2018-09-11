@@ -1,11 +1,131 @@
 <!--
-  Generated template for the HomePage page.
+  Generated template for the IndexPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-tabs>
-    <ion-tab tabIcon="home" tabTitle="首页" [root]="tabPages[0]"></ion-tab>
-    <ion-tab tabIcon="grid" tabTitle="仪表盘" [root]="tabPages[1]"></ion-tab>
-    <ion-tab tabIcon="contact" tabTitle="我的" [root]="tabPages[2]"></ion-tab>
-</ion-tabs>
+<ion-header>
+
+    <ion-navbar>
+        <ion-title (click)="showView()" text-center>首页</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="https://hello1024.oss-cn-beijing.aliyuncs.com/upload/goods/201808310421101174382331f7a611f0fcec856c2120ab5b88c236f3fa19.63574178.jpg">
+            </ion-avatar>
+            <h2>Marty McFly</h2>
+            <p>November 5, 1955</p>
+        </ion-item>
+
+        <img src="https://picsum.photos/600/400?10">
+
+        <ion-card-content>
+            <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
+                Whoa. This is heavy.</p>
+        </ion-card-content>
+
+        <ion-row>
+            <ion-col>
+                <button ion-button color="primary" clear small icon-start>
+                    <ion-icon name='thumbs-up'></ion-icon>
+                    12 Likes
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button color="primary" clear small icon-start>
+                    <ion-icon name='text'></ion-icon>
+                    4 Comments
+                </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+                <ion-note>
+                    11h ago
+                </ion-note>
+            </ion-col>
+        </ion-row>
+
+    </ion-card>
+    <ion-card>
+
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="https://www.cool1024.com/ng/assets/images/avatar/1.png">
+            </ion-avatar>
+            <h2>Sarah Connor</h2>
+            <p>May 12, 1984</p>
+        </ion-item>
+
+        <img src="https://picsum.photos/600/400?20">
+
+        <ion-card-content>
+            <p>I face the unknown future, with a sense of hope. Because if a machine, a Terminator, can learn the value of
+                human life, maybe we can too.</p>
+        </ion-card-content>
+
+        <ion-row>
+            <ion-col>
+                <button ion-button color="primary" clear small icon-start>
+                    <ion-icon name='thumbs-up'></ion-icon>
+                    30 Likes
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button color="primary" clear small icon-start>
+                    <ion-icon name='text'></ion-icon>
+                    64 Comments
+                </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+                <ion-note>
+                    30yr ago
+                </ion-note>
+            </ion-col>
+        </ion-row>
+
+    </ion-card>
+
+    <ion-card>
+
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="https://www.cool1024.com/ng/assets/images/avatar/2.png">
+            </ion-avatar>
+            <h2>Dr. Ian Malcolm</h2>
+            <p>June 28, 1990</p>
+        </ion-item>
+
+        <img src="https://picsum.photos/600/400?30">
+
+        <ion-card-content>
+            <p>Your scientists were so preoccupied with whether or not they could, that they didn't stop to think if they
+                should.
+            </p>
+        </ion-card-content>
+
+        <ion-row>
+            <ion-col>
+                <button ion-button color="primary" clear small icon-start>
+                    <ion-icon name='thumbs-up'></ion-icon>
+                    46 Likes
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button color="primary" clear small icon-start>
+                    <ion-icon name='text'></ion-icon>
+                    66 Comments
+                </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+                <ion-note>
+                    2d ago
+                </ion-note>
+            </ion-col>
+        </ion-row>
+
+    </ion-card>
+</ion-content>

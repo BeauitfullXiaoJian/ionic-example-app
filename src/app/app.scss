@@ -29,3 +29,46 @@ ion-content {
 [no-lines].border-bottom {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
+
+// Custom icon
+@mixin newicon($name, $default, $active) {
+    &[class*="custom-#{$name}"] {
+        background-image: url(#{$default});
+    }
+
+    &[class*="custom-#{$name}"] {
+        &[ng-reflect-is-active="true"] {
+            background-image: url(#{$active});
+        }
+    }
+}
+
+@mixin newcoloricon($name, $path) {
+    &[class*="custom-#{$name}"] {
+        filter: grayscale(100%);
+        background-image: url(#{$path});
+    }
+
+    &[class*="custom-#{$name}"] {
+        &[ng-reflect-is-active="true"] {
+            filter: grayscale(0%);
+            background-image: url(#{$path});
+        }
+    }
+}
+
+ion-icon {
+    &[class*="custom-"] {
+        background-size: contain;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        width: 1em;
+        height: 1em;
+    }
+
+    // @include newicon("lolly", "../assets/icon/lolly-candy.svg", "../assets/icon/lemon.svg");
+
+    @include newcoloricon("lolly", "../assets/icon/lolly-candy.svg");
+    @include newcoloricon("strawberry", "../assets/icon/strawberry.svg");
+    @include newcoloricon("lemon", "../assets/icon/lemon.svg");
+}

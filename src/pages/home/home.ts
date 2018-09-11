@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+declare const window: any;
 
 /**
- * Generated class for the HomePage page.
+ * Generated class for the IndexPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -15,13 +16,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-    tabPages = ['IndexPage', 'DashboardPage', 'UserPage'];
+    constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    showView() {
+        window.NativeView.showView();
     }
-
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad HomePage');
-    }
-
 }

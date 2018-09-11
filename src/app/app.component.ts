@@ -9,7 +9,7 @@ import { AuthService } from '../providers/auth/auth';
 })
 export class MyApp implements OnInit {
 
-    rootPage: any = 'HomePage';
+    rootPage: any = 'TabPage';
 
     constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth: AuthService) {
         platform.ready().then(() => {

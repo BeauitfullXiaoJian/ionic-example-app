@@ -1,7 +1,7 @@
 export const HttpConfig = {
 
     // 服务器接口地址
-    SERVER_URL: 'http://192.168.1.152:8080',
+    SERVER_URL: 'http://127.0.0.1:8080',
 
     WEBSOCKET_URL: '',
 
