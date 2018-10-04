@@ -52,13 +52,10 @@ ion-content {
         filter: grayscale(100%);
         background-image: url(#{$path});
     }
+}
 
-    &[class*="custom-#{$name}"] {
-        &[ng-reflect-is-active="true"] {
-            filter: grayscale(0%);
-            background-image: url(#{$path});
-        }
-    }
+[aria-selected="true"] ion-icon{
+    filter: grayscale(0%) !important;
 }
 
 ion-icon {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, App } from 'ionic-angular';
+import { IonicPage, App } from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth';
 
 /**
@@ -21,7 +21,6 @@ export class UserPage {
     }
 
     constructor(
-        private modalCtrl: ModalController, 
         private auth: AuthService,
         private app: App
         ) { }

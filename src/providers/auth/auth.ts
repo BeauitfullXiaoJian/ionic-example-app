@@ -5,6 +5,7 @@ import { GlobalService } from './global';
 import { ApiData } from '../request/api-data';
 import { map } from 'rxjs/operators';
 import { HttpConfig } from '../../configs/http.config';
+import { App } from 'ionic-angular';
 
 @Injectable()
 export class AuthService {
@@ -17,6 +18,7 @@ export class AuthService {
     constructor(
         private request: RequestService,
         private global: GlobalService,
+        private app: App
     ) { }
 
     get loginState(): boolean {
@@ -42,7 +44,7 @@ export class AuthService {
         this.loginState = false;
         this.request.post('/signout', this.global.getValuesFromStorage(...HttpConfig.AUTH_HEADER_PARAMS))
             .subscribe();
-        // this.router.navigateByUrl('/login');
+        this.app.getRootNav().push('LoginPage');
     }
 
     setIn() {
@@ -55,15 +57,14 @@ export class AuthService {
 
     checkToken(): Observable<boolean> | boolean {
         if (!this.global.checkValuesFromStorage(...HttpConfig.AUTH_HEADER_PARAMS)) {
-            // this.router.navigateByUrl('/dashboard/login');
+            this.app.getRootNav().push('LoginPage');
             return false;
         }
         const params = this.global.getValuesFromStorage(...HttpConfig.AUTH_HEADER_PARAMS);
         return this.request.withoutHeader
             .post('/managerapi/check', params, false)
             .pipe(map<ApiData, boolean>(res => {
-                res.result ? (this.setIn(), this.user = res.datas) : this.loginState = false;
-                // : (this.loginState = false, this.router.navigateByUrl('/dashboard/login'));
+                res.result ? (this.setIn(), this.user = res.datas) : (this.loginState = false, this.app.getRootNav().push('LoginPage'));
                 return res.result;
             }));
     }
