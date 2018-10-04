@@ -13,3 +13,6 @@
 `ionic g page`
 * 页面跳转
 `app.getRootNav().push('ExamplePage');`
+
+## 预览
+![预览](preview.png)
