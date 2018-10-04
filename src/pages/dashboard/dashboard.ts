@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController } from 'ionic-angular';
+import { IonicPage, App } from 'ionic-angular';
 
 /**
  * Generated class for the DashboardPage page.
@@ -42,6 +42,6 @@ export class DashboardPage {
         }
     }
 
-    constructor(public modalCtrl: ModalController) { }
+    constructor(public app: App) { }
 
 }

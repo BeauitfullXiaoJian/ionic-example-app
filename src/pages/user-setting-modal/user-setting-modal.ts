@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ViewController, AlertController, ModalController } from 'ionic-angular';
+import { IonicPage, ViewController, AlertController, App } from 'ionic-angular';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 declare const window: any;
 
@@ -22,7 +22,7 @@ export class UserSettingModalPage {
     constructor(
         public viewCtrl: ViewController,
         private alertCtrl: AlertController,
-        private modalCtrl: ModalController,
+        private app: App,
         private domSanitizer: DomSanitizer,
     ) { }
 
@@ -56,7 +56,7 @@ export class UserSettingModalPage {
      * 显示我的二维码
      */
     showQrcode() {
-        this.modalCtrl.create('UserQrcodeModalPage').present();
+        this.app.getRootNav().push('UserQrcodeModalPage');
     }
 
     /**

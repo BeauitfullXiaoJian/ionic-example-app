@@ -49,10 +49,10 @@
         </table>
     </ion-card>
     <ion-list>
-        <button (click)="modalCtrl.create('ExampleListPage').present()" ion-item no-lines detail-none class="border-bottom">
+        <button (click)="app.getRootNav().push('ExampleListPage')" ion-item no-lines detail-none class="border-bottom">
             <ion-label>列表页面</ion-label>
         </button>
-        <button (click)="modalCtrl.create('ExampleFormPage').present()" ion-item no-lines detail-none class="border-bottom">
+        <button (click)="app.getRootNav().push('ExampleFormPage')" ion-item no-lines detail-none class="border-bottom">
             <ion-label>表单页面</ion-label>
         </button>
     </ion-list>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController } from 'ionic-angular';
+import { IonicPage, ModalController, App } from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth';
 
 /**
@@ -20,20 +20,24 @@ export class UserPage {
         return this.auth.user || {};
     }
 
-    constructor(private modalCtrl: ModalController, private auth: AuthService) { }
+    constructor(
+        private modalCtrl: ModalController, 
+        private auth: AuthService,
+        private app: App
+        ) { }
 
     /**
-     * 显示用户设置弹窗
+     * 显示用户设置页面
      */
     showUserSettingModal() {
-        this.modalCtrl.create('UserSettingModalPage').present();
+        this.app.getRootNav().push('UserSettingModalPage');
     }
 
     /**
-     * 显示系统设置弹窗
+     * 显示系统设置页面
      */
     showSystemSettingModal() {
-        this.modalCtrl.create('SystemSettingModalPage').present();
+        this.app.getRootNav().push('SystemSettingModalPage');
     }
 
 }
