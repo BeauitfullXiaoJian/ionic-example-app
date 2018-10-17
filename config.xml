@@ -85,6 +85,10 @@
     <plugin name="cordova-plugin-telerik-imagepicker" spec="^2.2.2">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="读取本地相册" />
     </plugin>
-    <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-amap-mylocation" spec="0.0.5">
+        <variable name="API_KEY" value="65e5fb69231b2ded9565c2ad6c2cbb99" />
+        <variable name="IOS_KEY" value="f2f5baa023acdfc4d3aca9f88db2bdde" />
+    </plugin>
     <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="6.4.0" />
 </widget>

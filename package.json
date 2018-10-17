@@ -25,11 +25,12 @@
     "@ionic-native/status-bar": "~4.12.0",
     "@ionic/storage": "2.1.3",
     "chart.js": "^2.7.2",
-    "cordova-android": "7.0.0",
+    "cordova-amap-mylocation": "0.0.5",
+    "cordova-android": "6.4.0",
     "cordova-ios": "4.5.5",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.1.3",
-    "cordova-plugin-ionic-webview": "^2.1.4",
+    "cordova-plugin-ionic-webview": "^2.2.0",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-telerik-imagepicker": "^2.2.2",
@@ -57,11 +58,15 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-telerik-imagepicker": {
         "PHOTO_LIBRARY_USAGE_DESCRIPTION": "读取本地相册"
+      },
+      "cordova-amap-mylocation": {
+        "API_KEY": "65e5fb69231b2ded9565c2ad6c2cbb99",
+        "IOS_KEY": "f2f5baa023acdfc4d3aca9f88db2bdde"
       }
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

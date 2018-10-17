@@ -3,6 +3,7 @@ import { Platform, IonicApp, App, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../providers/auth/auth';
+declare const window: any;
 
 @Component({
     templateUrl: 'app.html'
@@ -38,10 +39,14 @@ export class MyApp implements OnInit {
                 let activeNav = app.getRootNav();
                 return activeNav.canGoBack() ? activeNav.pop() : this.showExit();
             }, 1);
+            // 尝试获取地理位置
+            // this.getLocation();
         });
     }
 
-    //双击退出提示框
+    /**
+     * 双击退出提示框
+     */
     showExit() {
         if (this.backButtonPressed) {
             this.platform.exitApp();
@@ -55,6 +60,25 @@ export class MyApp implements OnInit {
         }
     }
 
+    /**
+     * 获取地理定位信息
+     */
+    getLocation() {
+        setInterval(() => {
+            window.AMap.getMyLocation(
+                success => {
+                    alert(JSON.stringify(success));
+                },
+                error => {
+                    alert(error);
+                }
+            );
+        }, 1000);
+    }
+
+    /**
+     * 应用全局初始化操作
+     */
     ngOnInit() {
         // 载入用户信息
         this.auth.loadUserDeail();
