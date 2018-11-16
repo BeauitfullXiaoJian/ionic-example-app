@@ -31,6 +31,7 @@ export class ChartDirective implements AfterViewInit, OnChanges {
     }
 
     ngAfterViewInit() {
+        console.log('options', this.options);
         this.canvas = this.elementRef.nativeElement;
         this.chart = new window.Chart(this.canvas, { type: this.type, options: this.options });
         this.ready = true;

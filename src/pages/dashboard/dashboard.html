@@ -15,7 +15,13 @@
 
 <ion-content>
     <ion-card>
-        <canvas chart [data]="data" [options]="options" type="line" labels="labels"></canvas>
+        <canvas chart [data]="lineData" [options]="options" type="line"></canvas>
+    </ion-card>
+    <ion-card>
+        <canvas chart [data]="barData" [options]="options" type="bar"></canvas>
+    </ion-card>
+    <ion-card>
+        <canvas chart [data]="pieData" type="pie" height="300"></canvas>
     </ion-card>
     <ion-card padding>
         <table class="table table-striped">

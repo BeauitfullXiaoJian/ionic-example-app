@@ -22,8 +22,8 @@
     text-align: center;
 }
 
-ion-buttons[end]{
-    min-width: 44px;
+ion-buttons[end] {
+    min-width: 56px;
 }
 
 ion-content {
@@ -54,7 +54,7 @@ ion-content {
     }
 }
 
-[aria-selected="true"] ion-icon{
+[aria-selected="true"] ion-icon {
     filter: grayscale(0%) !important;
 }
 

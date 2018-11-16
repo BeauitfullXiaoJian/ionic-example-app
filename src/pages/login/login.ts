@@ -53,7 +53,7 @@ export class LoginPage {
                 });
                 this.auth.loadUserDeail();
                 // 导航到首页
-                this.navCtrl.setRoot('HomePage');
+                this.navCtrl.setRoot('TabPage');
             },
             complete: () => loader.dismiss()
         });
