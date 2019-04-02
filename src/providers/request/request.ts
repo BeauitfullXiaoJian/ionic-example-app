@@ -33,12 +33,33 @@ export class RequestService {
      * @param protocols 附加协议参数
      * @return Observable<string>
      */
-    websocket(host: string, protocols: string | string[] = []): Observable<string> {
+    // _websocket(host: string, protocols: string | string[] = []): Observable<string> {
+    //     let reconnent = true;
+    //     const subject: Subject<string> = new Subject<string>();
+    //     Observable.interval(HttpConfig.RECONNECT_TIME).subscribe(() => {
+    //         if (reconnent) {
+    //             this.initWebsocket(host, protocols, subject, () => reconnent = true);
+    //         }
+    //         reconnent = false;
+    //     });
+    //     return subject.asObservable();
+    // }
+
+    websocket(apiHost: string, protocols: string | string[] = []): Observable<string> {
         let reconnent = true;
         const subject: Subject<string> = new Subject<string>();
         Observable.interval(HttpConfig.RECONNECT_TIME).subscribe(() => {
             if (reconnent) {
-                this.initWebsocket(host, protocols, subject, () => reconnent = true);
+                this.withoutHost.get(apiHost, { uid: protocols }, false).subscribe(apiData => {
+                    console.log(apiData);
+                    if (apiData.result) {
+                        console.log(apiData.datas);
+                        const url = apiData.datas.url + '?token=' + apiData.datas.token;
+                        this.initWebsocket(url, protocols, subject, () => reconnent = true);
+                    } else {
+                        reconnent = true;
+                    }
+                });
             }
             reconnent = false;
         });
@@ -55,7 +76,8 @@ export class RequestService {
     private initWebsocket(host: string, protocols: string | string[], subject: Subject<string>, reconnent: Function) {
         const ws = new WebSocket(host, protocols);
         ws.onmessage = (res: MessageEvent) => { subject.next(res.data); };
-        ws.onclose = () => { reconnent(); };
+        ws.onclose = () => { console.log(1111); reconnent(); };
+        ws.onerror = () => { console.log('连接错误') };
     }
 
     /**

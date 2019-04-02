@@ -94,6 +94,7 @@ export class DashboardPage {
         }
     }
 
-    constructor(public app: App) { }
+    constructor(public app: App) {
 
+    }
 }

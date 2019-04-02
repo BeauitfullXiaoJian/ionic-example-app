@@ -1,7 +1,9 @@
 export const HttpConfig = {
 
     // 服务器接口地址
-    SERVER_URL: 'http://127.0.0.1:8080',
+    SERVER_URL: 'https://www.cool1024.com',
+
+    SOURCE_URL: 'https://www.cool1024.com',
 
     WEBSOCKET_URL: '',
 
@@ -14,7 +16,7 @@ export const HttpConfig = {
     TOAST_ERROR_TIME: 3000,
 
     // WEBSOCKET重新连接时间
-    RECONNECT_TIME: 2000,
+    RECONNECT_TIME: 1000,
 
     // 响应错误提示消息
     HTTP_ERRORS: {

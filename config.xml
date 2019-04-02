@@ -90,5 +90,5 @@
         <variable name="IOS_KEY" value="f2f5baa023acdfc4d3aca9f88db2bdde" />
     </plugin>
     <engine name="ios" spec="4.5.5" />
-    <engine name="android" spec="6.4.0" />
+    <engine name="android" spec="^6.4.0" />
 </widget>

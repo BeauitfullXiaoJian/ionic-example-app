@@ -1,0 +1,70 @@
+<!--
+  Generated template for the ChatPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>聊天</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content #content padding>
+    <ng-container *ngFor="let row of messageRows">
+        <!-- 我的消息 -->
+        <div *ngIf="row.self" (click)="trySend(row)" margin-bottom class="d-flex flex-row-reverse chat">
+            <img height="40" width="40" class="avatar-end flex-shrink-0" [src]="row.avatar">
+            <div class="talk-bubble tri-right round right-in">
+                <div class="talktext">
+                    <!-- 文字 -->
+                    <p *ngIf="row.message.message.type==='text'">
+                        <ion-spinner *ngIf="row.status===0"></ion-spinner> {{row.message.message.content}}
+                    </p>
+                    <!-- 图片 -->
+                    <img [class.loading]="row.status===0" *ngIf="row.message.message.type==='image'"
+                        [src]="row.message.message.content">
+                    <!-- 语音 -->
+                    <div *ngIf="row.message.message.type==='sound'" (click)="playSound(row.message.message.content)"
+                        class="d-flex align-items-center flex-row-reverse">
+                        <img style="transform:rotate(180deg)" height="16" src="assets/icon/voice.svg">
+                        <video style="width:100px;height:10px;visibility: hidden;"
+                            [src]="domSanitizer.bypassSecurityTrustResourceUrl(row.message.message.content)"></video>
+                        <ion-spinner *ngIf="row.status===0"></ion-spinner>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 对方消息 -->
+        <div *ngIf="!row.self" margin-bottom class="d-flex chat">
+            <img height="40" width="40" class="avatar-start" [src]="row.avatar">
+            <div class="talk-bubble tri-right round left-in">
+                <div class="talktext">
+                    <img *ngIf="row.message.message.type==='image'" [src]="source+row.message.message.content">
+                    <p *ngIf="row.message.message.type==='text'">{{row.message.message.content}}</p>
+                    <div *ngIf="row.message.message.type==='sound'" (click)="playSound(row.message.message.content)"
+                        class="d-flex align-items-center">
+                        <img height="16" src="assets/icon/voice.svg">
+                        <video style="width:100px;height:10px;visibility: hidden;"
+                            [src]="source+row.message.message.content"></video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <div class="hold"></div>
+</ion-content>
+<div class="chat-input d-flex align-items-center">
+    <ion-input [(ngModel)]="inputMessage" padding-horizontal type="text" placeholder="说点什么吧～"></ion-input>
+    <button (click)="sendMessage()" *ngIf="inputMessage;else iconBlock" ion-button small mode="ios">发送</button>
+    <ng-template #iconBlock>
+        <button (click)="sendImage()" mode="ios" ion-button icon-only clear>
+            <ion-icon name="image"></ion-icon>
+        </button>
+        <button (click)="sendSound()" mode="ios" ion-button icon-only clear>
+            <ion-icon name="mic"></ion-icon>
+        </button>
+    </ng-template>
+</div>

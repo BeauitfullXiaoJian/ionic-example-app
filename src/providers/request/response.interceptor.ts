@@ -94,7 +94,7 @@ export class ResponseInterceptor implements HttpInterceptor {
     responseHandle(res: any, request: HttpRequest<any>) {
         if (res instanceof HttpResponse) {
             if (res.body !== null && ApiResponse.isApiResponse(res.body)) {
-                const apiData = new ApiData(res.body.result, res.body.message, res.body.datas);
+                const apiData = new ApiData(res.body.result, res.body.message, res.body.datas || res.body.data);
                 if (apiData.result === false) {
                     this.showToast(200, apiData.messageStr);
                 }

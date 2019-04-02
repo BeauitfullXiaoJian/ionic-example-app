@@ -11,6 +11,7 @@ import { RequestInterceptor } from '../providers/request/request.interceptor';
 import { ResponseInterceptor } from '../providers/request/response.interceptor';
 import { GlobalService } from '../providers/auth/global';
 import { AuthService } from '../providers/auth/auth';
+import { ChatService } from '../providers/request/chat';
 
 @NgModule({
     declarations: [MyApp],
@@ -18,6 +19,7 @@ import { AuthService } from '../providers/auth/auth';
         BrowserModule,
         HttpClientModule,
         IonicModule.forRoot(MyApp, {
+            mode: 'ios',
             backButtonText: '',
             monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
         })
@@ -28,6 +30,7 @@ import { AuthService } from '../providers/auth/auth';
         StatusBar,
         SplashScreen,
         RequestService,
+        ChatService,
         GlobalService,
         AuthService,
         { provide: ErrorHandler, useClass: IonicErrorHandler },

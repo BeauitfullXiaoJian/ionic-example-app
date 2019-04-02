@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-declare const window: any;
 
 /**
  * Generated class for the IndexPage page.
@@ -19,6 +18,6 @@ export class HomePage {
     constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
     showView() {
-        window.NativeView.showView();
+
     }
 }
